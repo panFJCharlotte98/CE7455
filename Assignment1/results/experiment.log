@@ -1,0 +1,627 @@
+03/15/2024 20:01:02 - INFO - __main__ -   ********************Task 1b ********************
+03/15/2024 20:01:02 - INFO - __main__ -                                
+                            optimizer     lr  batch_size  hidden_dim  valid_acc  test_acc
+0    <class 'torch.optim.adamw.AdamW'>  0.001          16         100   0.731193     0.810
+1    <class 'torch.optim.adamw.AdamW'>  0.001          32         128   0.728440     0.794
+2      <class 'torch.optim.adam.Adam'>  0.001          64         100   0.721101     0.818
+3    <class 'torch.optim.adamw.AdamW'>  0.001         128         128   0.717431     0.782
+4      <class 'torch.optim.adam.Adam'>  0.001          32         128   0.715596     0.776
+..                                 ...    ...         ...         ...        ...       ...
+499    <class 'torch.optim.adam.Adam'>  0.500         128          20   0.161468     0.166
+500    <class 'torch.optim.adam.Adam'>  0.500          64          50   0.161468     0.162
+501  <class 'torch.optim.adamw.AdamW'>  0.500          32          50   0.159633     0.162
+502      <class 'torch.optim.sgd.SGD'>  0.500          64         256   0.156881     0.210
+503      <class 'torch.optim.sgd.SGD'>  0.500         128         512   0.152294     0.142
+
+[504 rows x 6 columns]
+
+03/17/2024 00:34:30 - INFO - __main__ -   ********************Task 1b ********************
+03/17/2024 00:34:30 - INFO - __main__ -                                 
+                            optimizer      lr  batch_size  hidden_dim  valid_acc  test_acc
+0     <class 'torch.optim.adamw.AdamW'>  0.0010          32          80   0.759633     0.742
+1       <class 'torch.optim.adam.Adam'>  0.0020          32          90   0.754128     0.818
+2       <class 'torch.optim.adam.Adam'>  0.0002          16         200   0.749541     0.782
+3       <class 'torch.optim.adam.Adam'>  0.0025          64          70   0.748624     0.806
+4       <class 'torch.optim.adam.Adam'>  0.0005          16         128   0.748624     0.820
+...                                 ...     ...         ...         ...        ...       ...
+1075  <class 'torch.optim.adamw.AdamW'>  0.0250          16         128   0.189908     0.224
+1076  <class 'torch.optim.adamw.AdamW'>  0.0250          64         250   0.187156     0.276
+1077    <class 'torch.optim.adam.Adam'>  0.0250          16         170   0.187156     0.178
+1078  <class 'torch.optim.adamw.AdamW'>  0.0250          16         180   0.182569     0.156
+1079  <class 'torch.optim.adamw.AdamW'>  0.0250          32         250   0.162385     0.164
+
+[1080 rows x 6 columns]
+
+
+03/17/2024 01:17:01 - INFO - __main__ -   ********************Task 1b ********************
+03/17/2024 01:17:01 - INFO - __main__ -                                
+                            optimizer      lr  batch_size  hidden_dim  valid_acc  test_acc
+0    <class 'torch.optim.adamw.AdamW'>  0.0010          32          80   0.759633     0.742
+1      <class 'torch.optim.adam.Adam'>  0.0020          32          90   0.754128     0.818
+2      <class 'torch.optim.adam.Adam'>  0.0010          32          80   0.740367     0.800
+3      <class 'torch.optim.adam.Adam'>  0.0015          64         100   0.739450     0.826
+4      <class 'torch.optim.adam.Adam'>  0.0015          32          80   0.739450     0.782
+..                                 ...     ...         ...         ...        ...       ...
+187    <class 'torch.optim.adam.Adam'>  0.0020          16         200   0.528440     0.700
+188    <class 'torch.optim.adam.Adam'>  0.0020          16         250   0.528440     0.624
+189  <class 'torch.optim.adamw.AdamW'>  0.0015          16         250   0.526606     0.606
+190  <class 'torch.optim.adamw.AdamW'>  0.0020          16         200   0.525688     0.704
+191    <class 'torch.optim.adam.Adam'>  0.0015          32         250   0.524771     0.614
+
+[192 rows x 6 columns]
+
+
+03/17/2024 01:57:02 - INFO - __main__ -   ********************Task 1c ********************
+03/17/2024 01:57:02 - INFO - __main__ -         regularization  reg_only_weights  l1_lambda  l2_lambda  weight_decay  valid_acc  test_acc
+0    l2_weight_decay              True      0.000    0.00000       0.10000   0.211009     0.130
+1    l2_weight_decay              True      0.000    0.00000       0.01000   0.614679     0.710
+2    l2_weight_decay              True      0.000    0.00000       0.00100   0.731193     0.768
+3    l2_weight_decay              True      0.000    0.00000       0.00010   0.718349     0.822
+4    l2_weight_decay              True      0.000    0.00000       0.00001   0.738532     0.822
+..               ...               ...        ...        ...           ...        ...       ...
+171             both             False      0.001    0.00100       0.00000   0.760550     0.786
+172             both             False      0.001    0.00020       0.00000   0.709174     0.814
+173             both             False      0.001    0.00010       0.00000   0.766055     0.820
+174             both             False      0.001    0.00002       0.00000   0.704587     0.794
+175             both             False      0.001    0.00001       0.00000   0.742202     0.836
+
+[176 rows x 7 columns]
+
+03/17/2024 16:27:06 - INFO - gensim.utils -   loading KeyedVectors object from word2vec-google-news-300.wordvectors
+03/17/2024 16:27:07 - INFO - gensim.utils -   loading vectors from word2vec-google-news-300.wordvectors.vectors.npy with mmap=None
+03/17/2024 16:27:07 - INFO - gensim.utils -   KeyedVectors lifecycle event {'fname': 'word2vec-google-news-300.wordvectors', 'datetime': '2024-03-17T16:27:07.681402', 'gensim': '4.3.2', 'python': '3.11.8 (main, Feb 26 2024, 21:39:34) [GCC 11.2.0]', 'platform': 'Linux-5.15.0-92-generic-x86_64-with-glibc2.35', 'event': 'loaded'}
+03/17/2024 16:27:13 - INFO - __main__ -   ********************Task 2 ********************
+03/17/2024 16:27:13 - INFO - __main__ -                            optimizer     lr  batch_size  hidden_dim  ... use_pretrained_word2vec  embed_dim  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...                   False        100   0.802752     0.854
+1  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...                    True        300   0.740367     0.848
+
+[2 rows x 11 columns]
+
+
+03/17/2024 16:44:09 - INFO - gensim.utils -   loading KeyedVectors object from word2vec-google-news-300.wordvectors
+03/17/2024 16:44:10 - INFO - gensim.utils -   loading vectors from word2vec-google-news-300.wordvectors.vectors.npy with mmap=None
+03/17/2024 16:44:11 - INFO - gensim.utils -   KeyedVectors lifecycle event {'fname': 'word2vec-google-news-300.wordvectors', 'datetime': '2024-03-17T16:44:11.103622', 'gensim': '4.3.2', 'python': '3.11.8 (main, Feb 26 2024, 21:39:34) [GCC 11.2.0]', 'platform': 'Linux-5.15.0-92-generic-x86_64-with-glibc2.35', 'event': 'loaded'}
+03/17/2024 16:44:18 - INFO - gensim.utils -   loading KeyedVectors object from word2vec-google-news-300.wordvectors
+03/17/2024 16:44:18 - INFO - gensim.utils -   loading vectors from word2vec-google-news-300.wordvectors.vectors.npy with mmap=None
+03/17/2024 16:44:19 - INFO - gensim.utils -   KeyedVectors lifecycle event {'fname': 'word2vec-google-news-300.wordvectors', 'datetime': '2024-03-17T16:44:19.271863', 'gensim': '4.3.2', 'python': '3.11.8 (main, Feb 26 2024, 21:39:34) [GCC 11.2.0]', 'platform': 'Linux-5.15.0-92-generic-x86_64-with-glibc2.35', 'event': 'loaded'}
+03/17/2024 16:44:25 - INFO - gensim.utils -   loading KeyedVectors object from word2vec-google-news-300.wordvectors
+03/17/2024 16:44:26 - INFO - gensim.utils -   loading vectors from word2vec-google-news-300.wordvectors.vectors.npy with mmap=None
+03/17/2024 16:44:26 - INFO - gensim.utils -   KeyedVectors lifecycle event {'fname': 'word2vec-google-news-300.wordvectors', 'datetime': '2024-03-17T16:44:26.570969', 'gensim': '4.3.2', 'python': '3.11.8 (main, Feb 26 2024, 21:39:34) [GCC 11.2.0]', 'platform': 'Linux-5.15.0-92-generic-x86_64-with-glibc2.35', 'event': 'loaded'}
+03/17/2024 16:44:32 - INFO - gensim.utils -   loading KeyedVectors object from word2vec-google-news-300.wordvectors
+03/17/2024 16:44:33 - INFO - gensim.utils -   loading vectors from word2vec-google-news-300.wordvectors.vectors.npy with mmap=None
+03/17/2024 16:44:33 - INFO - gensim.utils -   KeyedVectors lifecycle event {'fname': 'word2vec-google-news-300.wordvectors', 'datetime': '2024-03-17T16:44:33.859825', 'gensim': '4.3.2', 'python': '3.11.8 (main, Feb 26 2024, 21:39:34) [GCC 11.2.0]', 'platform': 'Linux-5.15.0-92-generic-x86_64-with-glibc2.35', 'event': 'loaded'}
+03/17/2024 16:44:39 - INFO - gensim.utils -   loading KeyedVectors object from word2vec-google-news-300.wordvectors
+03/17/2024 16:44:40 - INFO - gensim.utils -   loading vectors from word2vec-google-news-300.wordvectors.vectors.npy with mmap=None
+03/17/2024 16:44:41 - INFO - gensim.utils -   KeyedVectors lifecycle event {'fname': 'word2vec-google-news-300.wordvectors', 'datetime': '2024-03-17T16:44:41.042531', 'gensim': '4.3.2', 'python': '3.11.8 (main, Feb 26 2024, 21:39:34) [GCC 11.2.0]', 'platform': 'Linux-5.15.0-92-generic-x86_64-with-glibc2.35', 'event': 'loaded'}
+03/17/2024 16:48:58 - INFO - gensim.utils -   loading KeyedVectors object from word2vec-google-news-300.wordvectors
+03/17/2024 16:48:59 - INFO - gensim.utils -   loading vectors from word2vec-google-news-300.wordvectors.vectors.npy with mmap=None
+03/17/2024 16:48:59 - INFO - gensim.utils -   KeyedVectors lifecycle event {'fname': 'word2vec-google-news-300.wordvectors', 'datetime': '2024-03-17T16:48:59.989321', 'gensim': '4.3.2', 'python': '3.11.8 (main, Feb 26 2024, 21:39:34) [GCC 11.2.0]', 'platform': 'Linux-5.15.0-92-generic-x86_64-with-glibc2.35', 'event': 'loaded'}
+03/17/2024 18:02:57 - INFO - __main__ -   ********************Task 2gs ********************
+03/17/2024 18:02:57 - INFO - __main__ -                                 optimizer      lr  batch_size  hidden_dim  ... l2_lambda weight_decay  valid_acc  test_acc
+0       <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...         0            0   0.877064     0.904
+1       <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...         0            0   0.876147     0.902
+2       <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...         0            0   0.876147     0.884
+3     <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...         0            0   0.876147     0.888
+4     <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...         0            0   0.874312     0.886
+...                                 ...     ...         ...         ...  ...       ...          ...        ...       ...
+1843    <class 'torch.optim.adam.Adam'>  0.0500          32          90  ...         0            0   0.178899     0.226
+1844  <class 'torch.optim.adamw.AdamW'>  0.0500          32         250  ...         0            0   0.178899     0.202
+1845  <class 'torch.optim.adamw.AdamW'>  0.0500          16         140  ...         0            0   0.177982     0.230
+1846    <class 'torch.optim.adam.Adam'>  0.0500          16          80  ...         0            0   0.163303     0.166
+1847    <class 'torch.optim.adam.Adam'>  0.0500          16         100  ...         0            0   0.161468     0.162
+
+[1848 rows x 11 columns]
+03/17/2024 18:39:01 - INFO - __main__ -   ********************Task 2gs ********************
+03/17/2024 18:39:01 - INFO - __main__ -                              optimizer      lr  batch_size  hidden_dim  ... l2_lambda  weight_decay  valid_acc  test_acc
+0    <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   0.00000       0.00001   0.875229     0.892
+1    <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   0.00010       0.00000   0.874312     0.890
+2    <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   0.00000       0.00010   0.873394     0.878
+3    <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   0.00000       0.00010   0.872477     0.898
+4    <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   0.00002       0.00000   0.872477     0.886
+..                               ...     ...         ...         ...  ...       ...           ...        ...       ...
+171  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   0.20000       0.00000   0.211009     0.130
+172  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   2.00000       0.00000   0.211009     0.130
+173  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   1.00000       0.00000   0.211009     0.130
+174  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   0.20000       0.00000   0.174312     0.226
+175  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...   0.10000       0.00000   0.174312     0.226
+
+[176 rows x 11 columns]
+03/17/2024 19:11:32 - INFO - __main__ -   ********************Task 2gs ********************
+03/17/2024 19:11:32 - INFO - __main__ -                              optimizer      lr  batch_size  hidden_dim  ... l2_lambda  weight_decay  valid_acc  test_acc
+0    <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.00010           0.0   0.877982     0.894
+1    <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.00001           0.0   0.876147     0.892
+2    <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.00001           0.0   0.876147     0.878
+3    <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.00020           0.0   0.875229     0.874
+4    <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.00010           0.0   0.875229     0.880
+..                               ...     ...         ...         ...  ...       ...           ...        ...       ...
+99   <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.01000           0.0   0.811927     0.810
+100  <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.01000           0.0   0.800000     0.772
+101  <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.01000           0.0   0.795413     0.798
+102  <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.00000           0.1   0.242202     0.188
+103  <class 'torch.optim.adam.Adam'>  0.0002          16         140  ...   0.00000           0.1   0.242202     0.188
+
+[104 rows x 11 columns]
+03/17/2024 19:25:55 - INFO - __main__ -   ********************Task 2gs ********************
+03/17/2024 19:25:55 - INFO - __main__ -                              optimizer      lr  batch_size  hidden_dim  ... l2_lambda  weight_decay  valid_acc  test_acc
+0    <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.00000           0.0   0.879817     0.890
+1    <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.00010           0.0   0.877982     0.888
+2    <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.00010           0.0   0.877064     0.890
+3    <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.00002           0.0   0.877064     0.900
+4    <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.00000           0.0   0.875229     0.888
+..                               ...     ...         ...         ...  ...       ...           ...        ...       ...
+99   <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.01000           0.0   0.755046     0.786
+100  <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.01000           0.0   0.750459     0.740
+101  <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.01000           0.0   0.737615     0.766
+102  <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.00000           0.1   0.242202     0.188
+103  <class 'torch.optim.adam.Adam'>  0.0005          16         170  ...   0.00000           0.1   0.211009     0.130
+
+[104 rows x 11 columns]
+03/17/2024 19:39:44 - INFO - __main__ -   ********************Task 2gs ********************
+03/17/2024 19:39:44 - INFO - __main__ -                                optimizer      lr  batch_size  hidden_dim  ... l2_lambda  weight_decay  valid_acc  test_acc
+0    <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.00000         0.000   0.877982     0.890
+1    <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.00010         0.000   0.877064     0.896
+2    <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.00000         0.010   0.876147     0.888
+3    <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.00002         0.000   0.873394     0.884
+4    <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.00000         0.001   0.872477     0.884
+..                                 ...     ...         ...         ...  ...       ...           ...        ...       ...
+99   <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.01000         0.000   0.822018     0.822
+100  <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.01000         0.000   0.817431     0.826
+101  <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.01000         0.000   0.804587     0.830
+102  <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.01000         0.000   0.787156     0.806
+103  <class 'torch.optim.adamw.AdamW'>  0.0002          16         120  ...   0.01000         0.000   0.777064     0.808
+
+[104 rows x 11 columns]
+03/17/2024 19:58:51 - INFO - __main__ -   ********************Task 2gs ********************
+03/17/2024 19:58:51 - INFO - __main__ -                                optimizer      lr  batch_size  hidden_dim  ... l2_lambda  weight_decay  valid_acc  test_acc
+0    <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0000         0.001   0.883486     0.890
+1    <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0001         0.000   0.879817     0.890
+2    <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0000         0.001   0.875229     0.902
+3    <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0001         0.000   0.875229     0.890
+4    <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0000         0.010   0.874312     0.886
+..                                 ...     ...         ...         ...  ...       ...           ...        ...       ...
+99   <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0100         0.000   0.800917     0.830
+100  <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0100         0.000   0.794495     0.794
+101  <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0100         0.000   0.790826     0.810
+102  <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0100         0.000   0.788991     0.816
+103  <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...    0.0100         0.000   0.771560     0.786
+
+[104 rows x 11 columns]
+03/17/2024 20:18:39 - INFO - __main__ -   ********************Task 3 ********************
+03/17/2024 20:18:39 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... embed_dim output_mode  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       100         max   0.767890     0.818
+1  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       100         avg   0.751376     0.818
+2  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       100        None   0.734862     0.786
+3  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       100   attention   0.711927     0.778
+
+[4 rows x 12 columns]
+03/17/2024 20:21:31 - INFO - __main__ -   ********************Task 3 ********************
+03/17/2024 20:21:31 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... embed_dim output_mode  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       300        None   0.877064     0.904
+1  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       300         max   0.868807     0.880
+2  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       300         avg   0.856881     0.868
+3  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       300   attention   0.855046     0.868
+4  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       100         max   0.767890     0.818
+5  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       100         avg   0.751376     0.818
+6  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       100        None   0.734862     0.786
+7  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...       100   attention   0.711927     0.778
+
+[8 rows x 12 columns]
+03/17/2024 20:25:59 - INFO - __main__ -   ********************Task 3 ********************
+03/17/2024 20:25:59 - INFO - __main__ -                            optimizer     lr  batch_size  hidden_dim  ... embed_dim  output_mode  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...       100          max   0.821101     0.864
+1  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...       100          avg   0.818349     0.852
+2  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...       100         None   0.802752     0.854
+3  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...       100    attention   0.788073     0.820
+
+[4 rows x 12 columns]
+03/17/2024 20:36:14 - INFO - __main__ -   ********************Task 2gs ********************
+03/17/2024 20:36:14 - INFO - __main__ -                              optimizer      lr  batch_size  hidden_dim  ... l2_lambda  weight_decay  valid_acc  test_acc
+0    <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.00002           0.0   0.880734     0.906
+1    <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.00001           0.0   0.876147     0.888
+2    <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.00020           0.0   0.875229     0.888
+3    <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.00000           0.0   0.874312     0.896
+4    <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.00000           0.0   0.874312     0.888
+..                               ...     ...         ...         ...  ...       ...           ...        ...       ...
+99   <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.01000           0.0   0.798165     0.798
+100  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.01000           0.0   0.796330     0.752
+101  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.01000           0.0   0.793578     0.776
+102  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.00000           0.1   0.242202     0.188
+103  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   0.00000           0.1   0.242202     0.188
+
+[104 rows x 11 columns]
+03/17/2024 20:56:05 - INFO - __main__ -   ********************Task 2gs ********************
+03/17/2024 20:56:05 - INFO - __main__ -                              optimizer  ...  test_acc
+0    <class 'torch.optim.adam.Adam'>  ...     0.892
+1    <class 'torch.optim.adam.Adam'>  ...     0.884
+2    <class 'torch.optim.adam.Adam'>  ...     0.898
+3    <class 'torch.optim.adam.Adam'>  ...     0.896
+4    <class 'torch.optim.adam.Adam'>  ...     0.898
+..                               ...  ...       ...
+99   <class 'torch.optim.adam.Adam'>  ...     0.866
+100  <class 'torch.optim.adam.Adam'>  ...     0.806
+101  <class 'torch.optim.adam.Adam'>  ...     0.800
+102  <class 'torch.optim.adam.Adam'>  ...     0.188
+103  <class 'torch.optim.adam.Adam'>  ...     0.188
+
+[104 rows x 11 columns]
+03/17/2024 21:08:16 - INFO - __main__ -   ********************Task 3 ********************
+03/17/2024 21:08:16 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... embed_dim  output_mode  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300         None   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300          max   0.868807     0.876
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300    attention   0.867890     0.882
+3  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300          avg   0.855046     0.872
+
+[4 rows x 12 columns]
+03/17/2024 22:35:00 - INFO - __main__ -   ********************Task 3 ********************
+03/17/2024 22:35:00 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... embed_dim  output_mode  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300         None   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300    attention   0.870642     0.898
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300          max   0.868807     0.876
+3  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300          avg   0.855046     0.872
+
+[4 rows x 12 columns]
+03/17/2024 22:36:39 - INFO - __main__ -   ********************Task 3 ********************
+03/17/2024 22:36:39 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... embed_dim  output_mode  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300         None   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300          max   0.868807     0.876
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300    attention   0.867890     0.884
+3  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300          avg   0.855046     0.872
+
+[4 rows x 12 columns]
+03/17/2024 22:37:42 - INFO - __main__ -   ********************Task 3 ********************
+03/17/2024 22:37:42 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... embed_dim  output_mode  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300         None   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300    attention   0.871560     0.884
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300          max   0.868807     0.876
+3  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...       300          avg   0.855046     0.872
+
+[4 rows x 12 columns]
+03/17/2024 23:13:10 - INFO - __main__ -   ********************Task 3 ********************
+03/17/2024 23:13:10 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... output_mode  key_value_proj_dim  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...        None                 NaN   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   attention               170.0   0.871560     0.884
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   attention                17.0   0.870642     0.898
+3  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...         max                 NaN   0.868807     0.876
+4  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   attention                34.0   0.868807     0.880
+5  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   attention                10.0   0.867890     0.882
+6  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...   attention                85.0   0.867890     0.884
+7  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...         avg                 NaN   0.855046     0.872
+
+[8 rows x 13 columns]
+03/17/2024 23:52:51 - INFO - __main__ -   ********************Task 4 ********************
+03/17/2024 23:52:51 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... key_value_proj_dim     rnn  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...               None     RNN   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...               None    LSTM   0.877064     0.874
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...               None     GRU   0.870642     0.866
+3  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...               None  bi-RNN   0.855963     0.894
+4  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...               None  2l-RNN   0.850459     0.872
+
+[5 rows x 14 columns]
+03/18/2024 00:01:03 - INFO - __main__ -   ********************Task 4 ********************
+03/18/2024 00:01:03 - INFO - __main__ -                              optimizer     lr  batch_size  hidden_dim  ... key_value_proj_dim     rnn  valid_acc  test_acc
+0  <class 'torch.optim.adamw.AdamW'>  0.001          32          80  ...               None     GRU   0.767890     0.838
+1  <class 'torch.optim.adamw.AdamW'>  0.001          32          80  ...               None    LSTM   0.765138     0.834
+2  <class 'torch.optim.adamw.AdamW'>  0.001          32          80  ...               None     RNN   0.759633     0.742
+3  <class 'torch.optim.adamw.AdamW'>  0.001          32          80  ...               None  bi-RNN   0.733945     0.806
+4  <class 'torch.optim.adamw.AdamW'>  0.001          32          80  ...               None  2l-RNN   0.687156     0.772
+
+[5 rows x 14 columns]
+03/18/2024 20:23:27 - INFO - __main__ -   ********************Task 1b ********************
+03/18/2024 20:23:27 - INFO - __main__ -                                    optimizer     lr  batch_size  hidden_dim  valid_acc  test_acc
+0    <class 'torch.optim.adagrad.Adagrad'>  0.010          32         200   0.746789     0.814
+1    <class 'torch.optim.adagrad.Adagrad'>  0.010          16         256   0.734862     0.806
+2    <class 'torch.optim.adagrad.Adagrad'>  0.005          32         200   0.732110     0.794
+3        <class 'torch.optim.adamw.AdamW'>  0.001          16         100   0.731193     0.810
+4    <class 'torch.optim.adagrad.Adagrad'>  0.010          64         256   0.730275     0.810
+..                                     ...    ...         ...         ...        ...       ...
+667        <class 'torch.optim.adam.Adam'>  0.500          64          50   0.161468     0.162
+668        <class 'torch.optim.adam.Adam'>  0.500         128          20   0.161468     0.166
+669      <class 'torch.optim.adamw.AdamW'>  0.500          32          50   0.159633     0.162
+670          <class 'torch.optim.sgd.SGD'>  0.500          64         256   0.156881     0.210
+671          <class 'torch.optim.sgd.SGD'>  0.500         128         512   0.152294     0.142
+
+[672 rows x 6 columns]
+03/18/2024 21:24:18 - INFO - __main__ -   ********************Task 1b ********************
+03/18/2024 21:24:18 - INFO - __main__ -                                 optimizer      lr  batch_size  hidden_dim  valid_acc  test_acc
+0     <class 'torch.optim.adamw.AdamW'>  0.0010          32          80   0.759633     0.742
+1       <class 'torch.optim.adam.Adam'>  0.0020          32          90   0.754128     0.818
+2       <class 'torch.optim.adam.Adam'>  0.0002          16         200   0.749541     0.782
+3       <class 'torch.optim.adam.Adam'>  0.0005          16         128   0.748624     0.820
+4       <class 'torch.optim.adam.Adam'>  0.0025          64          70   0.748624     0.806
+...                                 ...     ...         ...         ...        ...       ...
+1615  <class 'torch.optim.adamw.AdamW'>  0.0250          16         128   0.189908     0.224
+1616    <class 'torch.optim.adam.Adam'>  0.0250          16         256   0.188991     0.166
+1617    <class 'torch.optim.adam.Adam'>  0.0250          16         170   0.187156     0.178
+1618  <class 'torch.optim.adamw.AdamW'>  0.0250          16         180   0.182569     0.156
+1619  <class 'torch.optim.adamw.AdamW'>  0.0250          32         256   0.177064     0.226
+
+[1620 rows x 6 columns]
+03/18/2024 22:32:37 - INFO - __main__ -   ********************Task 1b ********************
+03/18/2024 22:32:37 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0015          32          90   0.712844     0.776
+03/19/2024 02:43:07 - INFO - __main__ -   ********************Task 3 ********************
+03/19/2024 02:43:07 - INFO - __main__ -                            optimizer      lr  batch_size  ...  key_value_proj_dim valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                 NaN  0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32  ...               170.0  0.871560     0.884
+2  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                17.0  0.870642     0.898
+3  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                 NaN  0.868807     0.876
+4  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                34.0  0.868807     0.880
+5  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                10.0  0.867890     0.882
+6  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                85.0  0.867890     0.884
+7  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                 NaN  0.855046     0.872
+
+[8 rows x 13 columns]
+03/19/2024 03:07:55 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 03:07:55 - INFO - __main__ -                            optimizer     lr  batch_size  hidden_dim  ...  rnn  add_component  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...  RNN           True   0.822018     0.854
+
+[1 rows x 15 columns]
+03/19/2024 03:19:22 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 03:19:22 - INFO - __main__ -                            optimizer     lr  batch_size  ...  multi_output_layers valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.002          32  ...                 True  0.822018     0.854
+1  <class 'torch.optim.adam.Adam'>  0.002          32  ...                False  0.822018     0.854
+2  <class 'torch.optim.adam.Adam'>  0.002          32  ...                 None  0.802752     0.854
+
+[3 rows x 16 columns]
+03/19/2024 03:22:14 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 03:22:14 - INFO - __main__ -                            optimizer     lr  batch_size  ...  multi_output_layers valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.002          32  ...                False  0.822018     0.854
+1  <class 'torch.optim.adam.Adam'>  0.002          32  ...                 True  0.805505     0.874
+2  <class 'torch.optim.adam.Adam'>  0.002          32  ...                 None  0.802752     0.854
+
+[3 rows x 16 columns]
+03/19/2024 03:27:54 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 03:27:54 - INFO - __main__ -                            optimizer      lr  batch_size  ...  multi_output_layers valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                 None  0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                False  0.875229     0.904
+2  <class 'torch.optim.adam.Adam'>  0.0005          32  ...                 True  0.844037     0.854
+
+[3 rows x 16 columns]
+03/19/2024 10:41:03 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 10:41:03 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... add_component multi_output_layers  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...         False                None   0.873394     0.900
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...          True               False   0.866055     0.898
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...          True                True   0.845872     0.856
+
+[3 rows x 16 columns]
+03/19/2024 10:44:48 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 10:44:48 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... add_component  multi_output_layers  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...         False                 None   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...          True                False   0.863303     0.876
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...          True                 True   0.844037     0.860
+
+[3 rows x 16 columns]
+03/19/2024 10:47:36 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 10:47:36 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... add_component  multi_output_layers  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...         False                 None   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...          True                False   0.875229     0.902
+2  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...          True                 True   0.837615     0.838
+
+[3 rows x 16 columns]
+03/19/2024 11:25:44 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 11:25:44 - INFO - __main__ -                             optimizer      lr  batch_size  hidden_dim  ... add_component multi_output_layers  valid_acc  test_acc
+0   <class 'torch.optim.adam.Adam'>  0.0010          64         170  ...          True               False   0.887156     0.908
+1   <class 'torch.optim.adam.Adam'>  0.0010          64         190  ...          True               False   0.882569     0.912
+2   <class 'torch.optim.adam.Adam'>  0.0010          64         150  ...          True               False   0.879817     0.896
+3   <class 'torch.optim.adam.Adam'>  0.0010          64         128  ...          True               False   0.879817     0.904
+4   <class 'torch.optim.adam.Adam'>  0.0010          64         150  ...          True                True   0.878899     0.888
+..                              ...     ...         ...         ...  ...           ...                 ...        ...       ...
+85  <class 'torch.optim.adam.Adam'>  0.0010          64         190  ...         False                None   0.806422     0.876
+86  <class 'torch.optim.adam.Adam'>  0.0002          64         190  ...          True                True   0.790826     0.822
+87  <class 'torch.optim.adam.Adam'>  0.0010          32         200  ...         False                None   0.755046     0.798
+88  <class 'torch.optim.adam.Adam'>  0.0002          32         170  ...          True                True   0.751376     0.786
+89  <class 'torch.optim.adam.Adam'>  0.0002          64         170  ...          True                True   0.729358     0.742
+
+[90 rows x 16 columns]
+03/19/2024 13:52:14 - INFO - __main__ -   ********************Task 1a ********************
+03/19/2024 13:52:14 - INFO - __main__ -                          optimizer    lr  batch_size  hidden_dim  valid_acc  test_acc
+0  <class 'torch.optim.sgd.SGD'>  0.01          64          50   0.244954     0.298
+03/19/2024 13:52:58 - INFO - __main__ -   ********************Task 1a ********************
+03/19/2024 13:52:58 - INFO - __main__ -                          optimizer    lr  batch_size  hidden_dim  valid_acc  test_acc
+0  <class 'torch.optim.sgd.SGD'>  0.01          64          50   0.244954     0.298
+03/19/2024 13:57:16 - INFO - __main__ -   ********************Task 1a ********************
+03/19/2024 13:57:16 - INFO - __main__ -                          optimizer    lr  batch_size  hidden_dim  valid_acc  test_acc
+0  <class 'torch.optim.sgd.SGD'>  0.01          64          50   0.258716     0.312
+03/19/2024 14:01:47 - INFO - __main__ -   ********************Task 1a ********************
+03/19/2024 14:01:47 - INFO - __main__ -                          optimizer    lr  ...  valid_acc  test_acc
+0  <class 'torch.optim.sgd.SGD'>  0.01  ...   0.244954     0.298
+
+[1 rows x 6 columns]
+03/19/2024 16:08:37 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 16:08:37 - INFO - __main__ -                              optimizer      lr  batch_size  hidden_dim  ... add_component multi_output_layers  valid_acc  test_acc
+0    <class 'torch.optim.adam.Adam'>  0.0010          16         200  ...          True               False   0.886239     0.896
+1    <class 'torch.optim.adam.Adam'>  0.0002          16         200  ...         False                None   0.881651     0.886
+2    <class 'torch.optim.adam.Adam'>  0.0005          32         200  ...         False                None   0.880734     0.886
+3    <class 'torch.optim.adam.Adam'>  0.0010          16         170  ...          True                True   0.879817     0.876
+4    <class 'torch.optim.adam.Adam'>  0.0010          16         150  ...          True               False   0.879817     0.892
+..                               ...     ...         ...         ...  ...           ...                 ...        ...       ...
+130  <class 'torch.optim.adam.Adam'>  0.0002          32         170  ...          True                True   0.730275     0.718
+131  <class 'torch.optim.adam.Adam'>  0.0002          64         200  ...          True                True   0.709174     0.712
+132  <class 'torch.optim.adam.Adam'>  0.0002          16         190  ...          True                True   0.702752     0.730
+133  <class 'torch.optim.adam.Adam'>  0.0002          64         190  ...          True                True   0.693578     0.710
+134  <class 'torch.optim.adam.Adam'>  0.0002          64         150  ...          True                True   0.663303     0.688
+
+[135 rows x 16 columns]
+03/19/2024 17:17:33 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 17:17:33 - INFO - __main__ -                              optimizer      lr  batch_size  hidden_dim  ... add_component multi_output_layers  valid_acc  test_acc
+0    <class 'torch.optim.adam.Adam'>  0.0010          16         128  ...         False                None   0.890826     0.906
+1    <class 'torch.optim.adam.Adam'>  0.0005          16         200  ...         False                None   0.890826     0.900
+2    <class 'torch.optim.adam.Adam'>  0.0010          16         190  ...          True                True   0.888073     0.904
+3    <class 'torch.optim.adam.Adam'>  0.0005          16         190  ...          True               False   0.887156     0.892
+4    <class 'torch.optim.adam.Adam'>  0.0010          16         150  ...          True               False   0.887156     0.894
+..                               ...     ...         ...         ...  ...           ...                 ...        ...       ...
+130  <class 'torch.optim.adam.Adam'>  0.0002          64         190  ...          True                True   0.782569     0.816
+131  <class 'torch.optim.adam.Adam'>  0.0002          64         150  ...          True                True   0.782569     0.786
+132  <class 'torch.optim.adam.Adam'>  0.0002          32         200  ...          True                True   0.714679     0.714
+133  <class 'torch.optim.adam.Adam'>  0.0002          64         200  ...          True                True   0.679817     0.698
+134  <class 'torch.optim.adam.Adam'>  0.0002          64         128  ...          True                True   0.670642     0.706
+
+[135 rows x 16 columns]
+03/19/2024 18:31:47 - INFO - __main__ -   ********************Task 2 ********************
+03/19/2024 18:31:47 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... use_pretrained_word2vec  embed_dim  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...                    True        300   0.880734     0.906
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         170  ...                   False        100   0.732110     0.814
+
+[2 rows x 11 columns]
+03/19/2024 18:37:52 - INFO - __main__ -   ********************Task 2 ********************
+03/19/2024 18:37:52 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... use_pretrained_word2vec  embed_dim  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0005          32         190  ...                    True        300   0.861468     0.890
+1  <class 'torch.optim.adam.Adam'>  0.0005          32         190  ...                   False        100   0.711927     0.768
+
+[2 rows x 11 columns]
+03/19/2024 18:38:29 - INFO - __main__ -   ********************Task 2 ********************
+03/19/2024 18:38:29 - INFO - __main__ -                              optimizer      lr  batch_size  hidden_dim  ... use_pretrained_word2vec  embed_dim  valid_acc  test_acc
+0  <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...                    True        300   0.883486     0.890
+1  <class 'torch.optim.adamw.AdamW'>  0.0005          32         190  ...                   False        100   0.727523     0.778
+
+[2 rows x 11 columns]
+03/19/2024 18:39:49 - INFO - __main__ -   ********************Task 2 ********************
+03/19/2024 18:39:49 - INFO - __main__ -                            optimizer      lr  batch_size  hidden_dim  ... use_pretrained_word2vec  embed_dim  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.0002          16         200  ...                    True        300   0.881651     0.892
+1  <class 'torch.optim.adam.Adam'>  0.0002          16         200  ...                   False        100   0.744954     0.792
+
+[2 rows x 11 columns]
+03/19/2024 19:15:56 - INFO - __main__ -   ********************Task 3 ********************
+03/19/2024 19:15:56 - INFO - __main__ -                            optimizer     lr  batch_size  hidden_dim  ... output_mode  key_value_proj_dim  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...         max                 NaN   0.821101     0.864
+1  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...         avg                 NaN   0.818349     0.852
+2  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...   attention                90.0   0.804587     0.844
+3  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...        None                 NaN   0.802752     0.854
+4  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...   attention                45.0   0.788991     0.820
+5  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...   attention                10.0   0.788073     0.820
+6  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...   attention                15.0   0.777064     0.832
+7  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...   attention                30.0   0.769725     0.816
+8  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...   attention                 9.0   0.749541     0.832
+
+[9 rows x 13 columns]
+03/19/2024 19:42:46 - INFO - __main__ -   ********************Task 4 ********************
+03/19/2024 19:42:46 - INFO - __main__ -                            optimizer     lr  batch_size  hidden_dim  ... key_value_proj_dim     rnn  valid_acc  test_acc
+0  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...               None     GRU   0.806422     0.874
+1  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...               None     RNN   0.802752     0.854
+2  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...               None    LSTM   0.798165     0.852
+3  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...               None  bi-RNN   0.767890     0.826
+4  <class 'torch.optim.adam.Adam'>  0.002          32          90  ...               None  2l-RNN   0.666972     0.768
+
+[5 rows x 14 columns]
+03/19/2024 21:07:35 - INFO - __main__ -   ********************Task 4 ********************
+03/19/2024 21:07:35 - INFO - __main__ -                            optimizer  ...  test_acc
+0  <class 'torch.optim.adam.Adam'>  ...     0.840
+1  <class 'torch.optim.adam.Adam'>  ...     0.820
+2  <class 'torch.optim.adam.Adam'>  ...     0.790
+3  <class 'torch.optim.adam.Adam'>  ...     0.798
+4  <class 'torch.optim.adam.Adam'>  ...     0.776
+
+[5 rows x 14 columns]
+03/19/2024 21:11:16 - INFO - __main__ -   ********************Task 4 ********************
+03/19/2024 21:11:16 - INFO - __main__ -                              optimizer  ...  test_acc
+0  <class 'torch.optim.adamw.AdamW'>  ...     0.838
+1  <class 'torch.optim.adamw.AdamW'>  ...     0.834
+2  <class 'torch.optim.adamw.AdamW'>  ...     0.742
+3  <class 'torch.optim.adamw.AdamW'>  ...     0.806
+4  <class 'torch.optim.adamw.AdamW'>  ...     0.772
+
+[5 rows x 14 columns]
+03/19/2024 21:55:40 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 21:55:40 - INFO - __main__ -                            optimizer  ...  test_acc
+0  <class 'torch.optim.adam.Adam'>  ...     0.900
+1  <class 'torch.optim.adam.Adam'>  ...     0.898
+2  <class 'torch.optim.adam.Adam'>  ...     0.856
+
+[3 rows x 16 columns]
+03/19/2024 22:33:29 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 22:33:29 - INFO - __main__ -                             optimizer     lr  batch_size  hidden_dim  ... add_component  multi_output_layers  valid_acc  test_acc
+0   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.886239     0.912
+1   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.886239     0.918
+2   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.882569     0.898
+3   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.882569     0.910
+4   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.880734     0.906
+5   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.880734     0.904
+6   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.880734     0.924
+7   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.878899     0.916
+8   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.877982     0.908
+9   <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.877064     0.916
+10  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.877064     0.910
+11  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.875229     0.902
+12  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.875229     0.912
+13  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.874312     0.912
+14  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.874312     0.904
+15  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.873394     0.914
+16  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.872477     0.916
+17  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.871560     0.900
+18  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.870642     0.906
+19  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                False   0.869725     0.898
+20  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.864220     0.876
+21  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.859633     0.884
+22  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.858716     0.872
+23  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.856881     0.864
+24  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.856881     0.876
+25  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.855963     0.868
+26  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.855046     0.866
+27  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.854128     0.878
+28  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.854128     0.894
+29  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.853211     0.874
+30  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.850459     0.870
+31  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.850459     0.860
+32  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.849541     0.874
+33  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.848624     0.862
+34  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.847706     0.870
+35  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.847706     0.866
+36  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.846789     0.866
+37  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.844037     0.860
+38  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.844037     0.862
+39  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.843119     0.858
+40  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.841284     0.862
+41  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.841284     0.858
+42  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.839450     0.866
+43  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.837615     0.862
+44  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.837615     0.878
+45  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.835780     0.848
+46  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.835780     0.852
+47  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.834862     0.818
+48  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.833028     0.866
+49  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.833028     0.896
+50  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.832110     0.872
+51  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.832110     0.870
+52  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.831193     0.842
+53  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.831193     0.866
+54  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.827523     0.864
+55  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.827523     0.864
+56  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.826606     0.864
+57  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...         False                 None   0.825688     0.834
+58  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.816514     0.858
+59  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                 True   0.815596     0.828
+
+[60 rows x 16 columns]
+03/19/2024 23:07:44 - INFO - __main__ -   ********************Task 5 ********************
+03/19/2024 23:07:44 - INFO - __main__ -                              optimizer     lr  batch_size  hidden_dim  ... add_component multi_output_layers  valid_acc  test_acc
+0    <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True               False   0.887156     0.908
+1    <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True               False   0.887156     0.898
+2    <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True               False   0.886239     0.918
+3    <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True               False   0.886239     0.912
+4    <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True               False   0.886239     0.914
+..                               ...    ...         ...         ...  ...           ...                 ...        ...       ...
+310  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                True   0.211009     0.130
+311  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True               False   0.211009     0.130
+312  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                True   0.211009     0.130
+313  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True                True   0.211009     0.130
+314  <class 'torch.optim.adam.Adam'>  0.001          64         170  ...          True               False   0.210092     0.130
+
+[315 rows x 18 columns]
+03/21/2024 22:47:00 - INFO - __main__ -   ********************Task 1a ********************
+03/21/2024 22:47:00 - INFO - __main__ -                          optimizer    lr  batch_size  hidden_dim  valid_acc  \
+0  <class 'torch.optim.sgd.SGD'>  0.01          64          50   0.244954   
+
+   test_acc  
+0     0.298  
+03/21/2024 22:48:16 - INFO - __main__ -   ********************Task 1a ********************
+03/21/2024 22:48:16 - INFO - __main__ -                          optimizer    lr  batch_size  hidden_dim  valid_acc  \
+0  <class 'torch.optim.sgd.SGD'>  0.01          64          50   0.244954   
+
+   test_acc  
+0     0.298  
+03/21/2024 22:48:46 - INFO - __main__ -   ********************Task 1a ********************
+03/21/2024 22:48:46 - INFO - __main__ -                          optimizer    lr  batch_size  hidden_dim  valid_acc  \
+0  <class 'torch.optim.sgd.SGD'>  0.01          64          50   0.244954   
+
+   test_acc  
+0     0.298  

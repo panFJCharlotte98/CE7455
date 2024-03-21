@@ -1,0 +1,10 @@
+optimizer,lr,batch_size,hidden_dim,regularization,reg_only_weights,l2_lambda,use_pretrained_word2vec,embed_dim,output_mode,key_value_proj_dim,valid_acc,test_acc
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,max,,0.8211009174311926,0.864
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,avg,,0.818348623853211,0.852
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,attention,90.0,0.8045871559633028,0.844
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,,,0.8027522935779816,0.854
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,attention,45.0,0.7889908256880734,0.82
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,attention,10.0,0.7880733944954128,0.82
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,attention,15.0,0.7770642201834862,0.832
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,attention,30.0,0.7697247706422018,0.816
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,attention,9.0,0.7495412844036697,0.832

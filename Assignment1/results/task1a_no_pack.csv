@@ -1,0 +1,2 @@
+optimizer,lr,batch_size,hidden_dim,valid_acc,test_acc
+<class 'torch.optim.sgd.SGD'>,0.01,64,50,0.25871559633027524,0.312

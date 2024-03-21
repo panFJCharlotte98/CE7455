@@ -1,0 +1,6 @@
+optimizer,lr,batch_size,hidden_dim,regularization,reg_only_weights,l2_lambda,use_pretrained_word2vec,embed_dim,output_mode,key_value_proj_dim,rnn,valid_acc,test_acc
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,,,GRU,0.8064220183486238,0.874
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,,,RNN,0.8027522935779816,0.854
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,,,LSTM,0.7981651376146789,0.852
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,,,bi-RNN,0.7678899082568807,0.826
+<class 'torch.optim.adam.Adam'>,0.002,32,90,l2,True,2e-05,False,100,,,2l-RNN,0.6669724770642201,0.768
