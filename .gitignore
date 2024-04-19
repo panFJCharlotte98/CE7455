@@ -1,3 +1,6 @@
 *.wordvectors
 *.pt
 *.npy
+*.zip
+Assignment2/data
+*.txt
