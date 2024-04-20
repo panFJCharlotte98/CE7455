@@ -1,0 +1,6 @@
+Architecture,rouge1_fmeasure,rouge1_precision,rouge1_recall,rouge2_fmeasure,rouge2_precision,rouge2_recall
+GRU Encoder + GRU Decoder,0.657,0.622,0.707,0.477,0.443,0.526
+LSTM Encoder + LSTM Decoder,0.638,0.601,0.688,0.458,0.425,0.506
+bi-LSTM Encoder + GRU Decoder,0.658,0.623,0.708,0.475,0.441,0.525
+GRU Encoder+ Attention + GRU Decoder,0.632,0.597,0.683,0.443,0.411,0.491
+Transformer Encoder + GRU Decoder,0.626,0.595,0.672,0.437,0.408,0.482

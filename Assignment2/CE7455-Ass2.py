@@ -15,8 +15,9 @@ from torchmetrics.text.rouge import ROUGEScore
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
+import transformers
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
+os.environ['CUDA_VISIBLE_DEVICES'] = "1"
 SOS_token = 0
 EOS_token = 1
 MAX_LENGTH = 15
@@ -142,11 +143,12 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
     # encoder_hidden = [n_layer * n_direction=1, batch_size, hidden_size]
     encoder_hidden = encoder.initHidden()
 
+
     encoder_optimizer.zero_grad()
     decoder_optimizer.zero_grad()
 
-    # encoder_outputs = [seq_len, hidden_size]
-    encoder_outputs = torch.zeros(max_length, encoder.hidden_size, device=device)
+    # encoder_outputs = [seq_len, n_direction * hidden_size]
+    encoder_outputs = torch.zeros(max_length, encoder.hidden_size * encoder.n_direction, device=device)
 
     loss = 0
     
@@ -155,19 +157,27 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
         # Note: You should take the mean of all hidden representation output from the transformer encoder of each token to be a sentence representation of the encoder.
         # Also, for the transformer encoder, you must input the whole sentence instead of feeding word by word to get the next token representation.
         encoder_outputs = encoder(input_tensor) # encoder_ouputs = [seq_len, batch_size, hidden_size]
+        #print(encoder_outputs.size())
+        
         # encoder_hidden : sentence representation
         encoder_hidden = torch.mean(encoder_outputs, dim=0, keepdim=True) # [1, batch_size, hidden_size]
+        #encoder_hidden = torch.max(encoder_outputs, dim=0, keepdim=True).values
+        # print(encoder_hidden.size())
+        # exit()
         encoder_outputs = encoder_outputs.squeeze(1)
     else:
         for ei in range(input_length):
             encoder_output, encoder_hidden = encoder(
                 input_tensor[ei], encoder_hidden) # encoder_output = [seq_len, batch_size, hidden_size]
             encoder_outputs[ei] = encoder_output[0, 0]
-
+        
     decoder_input = torch.tensor([[SOS_token]], device=device)
-
-    decoder_hidden = encoder_hidden
-
+    
+    if ("LSTM" in encoder.rnn_type) and ('LSTM' not in decoder.rnn_type):
+        decoder_hidden = encoder_hidden[0].view(1, 1, -1)
+    else:
+        decoder_hidden = encoder_hidden
+    
     use_teacher_forcing = True if random.random() < teacher_forcing_ratio else False
 
     if use_teacher_forcing:
@@ -218,16 +228,16 @@ def trainIters(encoder, decoder, input_lang, output_lang, train_pairs, epochs, p
     iter = 1
     n_iters = len(train_pairs) * epochs
 
-    for epoch in range(epochs):
+    for epoch in tqdm(range(epochs)):
         print("Epoch: %d/%d" % (epoch, epochs))
-        for training_pair in train_pairs:
+        for training_pair in tqdm(train_pairs):
             training_pair = tensorsFromPair(training_pair, input_lang, output_lang)
 
             input_tensor = training_pair[0]
             target_tensor = training_pair[1]
 
             loss = train(input_tensor, target_tensor, encoder,
-                        decoder, encoder_optimizer, decoder_optimizer, criterion, use_attention, use_transformer)
+                        decoder, encoder_optimizer, decoder_optimizer, criterion, use_attention=use_attention, use_transformer=use_transformer)
             print_loss_total += loss
             plot_loss_total += loss
 
@@ -246,7 +256,7 @@ def prediction_step(encoder, decoder, input_lang, output_lang, sentence, max_len
         input_length = input_tensor.size()[0]
         encoder_hidden = encoder.initHidden()
 
-        encoder_outputs = torch.zeros(max_length, encoder.hidden_size, device=device)
+        encoder_outputs = torch.zeros(max_length, encoder.hidden_size * encoder.n_direction, device=device)
         if use_transformer:
             # ------------------- Follow Task Instruction -------------------#
             # Note: You should take the mean of all hidden representation output from the transformer encoder of each token to be a sentence representation of the encoder.
@@ -254,6 +264,7 @@ def prediction_step(encoder, decoder, input_lang, output_lang, sentence, max_len
             encoder_outputs = encoder(input_tensor) # encoder_ouputs = [seq_len, batch_size, hidden_size]
             # encoder_hidden : sentence representation
             encoder_hidden = torch.mean(encoder_outputs, dim=0, keepdim=True) # [1, batch_size, hidden_size]
+            #encoder_hidden = torch.max(encoder_outputs, dim=0, keepdim=True).values
             encoder_outputs = encoder_outputs.squeeze(1)
         else:
             for ei in range(input_length):
@@ -261,8 +272,11 @@ def prediction_step(encoder, decoder, input_lang, output_lang, sentence, max_len
                 encoder_outputs[ei] += encoder_output[0, 0]
 
         decoder_input = torch.tensor([[SOS_token]], device=device)  # SOS
-
-        decoder_hidden = encoder_hidden
+        
+        if ("LSTM" in encoder.rnn_type) and ('LSTM' not in decoder.rnn_type):
+            decoder_hidden = encoder_hidden[0].view(1, 1, -1)
+        else:
+            decoder_hidden = encoder_hidden
 
         decoded_words = []
         if use_attention:
@@ -308,7 +322,7 @@ def test(encoder, decoder, input_lang, output_lang, testing_pairs, use_attention
     for i in tqdm(range(len(testing_pairs))):
         pair = testing_pairs[i]
         if use_attention:
-            output_words, _ = prediction_step(encoder, decoder, input_lang, output_lang, pair[0], use_attention, use_transformer)
+            output_words, _ = prediction_step(encoder, decoder, input_lang, output_lang, pair[0], use_attention=use_attention, use_transformer=use_transformer)
         else:
             output_words = prediction_step(encoder, decoder, input_lang, output_lang, pair[0], use_transformer=use_transformer)
         output_sentence = ' '.join(output_words)
@@ -355,16 +369,18 @@ def test(encoder, decoder, input_lang, output_lang, testing_pairs, use_attention
 # # ----------------------------Model ----------------------------------#
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class Encoder(nn.Module):
-    def __init__(self, input_vocab_size, hidden_size, rnn, use_transformer=False):
+    def __init__(self, input_vocab_size, hidden_size, rnn="GRU", use_transformer=False):
         super(Encoder, self).__init__()
         self.hidden_size = hidden_size
+        self.n_direction = 1
 
         self.embedding = nn.Embedding(input_vocab_size, hidden_size)
         
         self.use_transformer = use_transformer
         if use_transformer:
-            self.encoder_layer = nn.TransformerEncoderLayer(d_model=self.hidden_size, nhead=8)
-            self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=6)
+            self.rnn_type = ""
+            self.encoder_layer = nn.TransformerEncoderLayer(d_model=self.hidden_size, nhead=64)#8
+            self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=1)#6
         else:
             self.rnn_type = rnn
             if rnn == "GRU":
@@ -372,9 +388,10 @@ class Encoder(nn.Module):
             elif rnn == "LSTM":
                 self.rnn = nn.LSTM(hidden_size, hidden_size)
             elif rnn == "bi-LSTM":
+                self.n_direction = 2
                 self.rnn = nn.LSTM(hidden_size, hidden_size, bidirectional=True)
         
-    def forward(self, input, hidden):
+    def forward(self, input, hidden=None):
         
         if self.use_transformer:
             # embedded = [seq_len, batch_size, hidden_size]
@@ -384,14 +401,11 @@ class Encoder(nn.Module):
         else:
             embedded = self.embedding(input).view(1, 1, -1)
             output = embedded
-            if "LSTM" in self.rnn_type:
-                # output = [seq_len, batch_size, n_direction * hidden_size]
-                #       containing the output features (h_t) from the last layer of the LSTM, for each time step t
-                # hidden = [n_layer * n_direction, batch_size, hidden_size]
-                #       containing the final hidden state
-                output, (hidden, cell) = self.rnn(output, hidden)
-            else:
-                output, hidden = self.rnn(output, hidden)
+            # output = [seq_len, batch_size, n_direction * hidden_size]
+            #       containing the output features (h_t) from the last layer of the LSTM, for each time step t
+            # hidden = [n_layer * n_direction, batch_size, hidden_size]
+            #       containing the final hidden state
+            output, hidden = self.rnn(output, hidden) # hidden is a tuple of (hidden, cell)
             return output, hidden
 
     def initHidden(self):
@@ -466,7 +480,7 @@ class Decoder(nn.Module):
         if "LSTM" in self.rnn_type:
             # output = [seq_len, batch_size, n_direction * hidden_size]
             # hidden = [n_layer * n_direction, batch_size, hidden_size]
-            output, (hidden, cell) = self.rnn(output, hidden)
+            output, hidden = self.rnn(output, hidden)
         else:
             output, hidden = self.rnn(output, hidden)
         output = self.softmax(self.out(output[0]))
@@ -481,26 +495,28 @@ def run(
     output_lang,
     train_pairs,
     test_pairs,
-    encoder_rnn, 
-    decoder_rnn, 
+    encoder_rnn="GRU", 
+    decoder_rnn="GRU", 
+    decoder_hidden_size=None,
     use_attention=False, 
-    use_transformer=False
+    use_transformer=False,
 ):
     # Default setting
-    epochs = 1
+    epochs = 5
     hidden_size = 512
     encoder1 = Encoder(input_lang.n_words, hidden_size, rnn=encoder_rnn, use_transformer=use_transformer).to(device)
     if use_attention:
         decoder1 = AttnDecoderRNN(hidden_size, output_lang.n_words, dropout_p=0.1).to(device)
     else:
-        decoder1 = Decoder(hidden_size, output_lang.n_words, rnn=decoder_rnn).to(device)
+        d_hidden_size = hidden_size if decoder_hidden_size is None else decoder_hidden_size
+        decoder1 = Decoder(d_hidden_size, output_lang.n_words, rnn=decoder_rnn).to(device)
 
-    trainIters(encoder1, decoder1, input_lang, output_lang, train_pairs, epochs=epochs, print_every=5000)
+    trainIters(encoder1, decoder1, input_lang, output_lang, train_pairs, epochs=epochs, print_every=5000, use_attention=use_attention, use_transformer=use_transformer)
     #input,gt,predict,score = test(encoder1, decoder1, train_pairs)
-    input,gt,predict,score = test(encoder1, decoder1, test_pairs)
+    input,gt,predict,score = test(encoder1, decoder1, input_lang, output_lang, test_pairs, use_attention=use_attention, use_transformer=use_transformer)
     del encoder1
     del decoder1
-    return {task_name: [v for k, v in score.items()]}, [k for k, _ in score.items()]
+    return {task_name: [round(v,3) for k, v in score.items()]}, [k for k, _ in score.items()]
 
 def main():
     input_lang, output_lang, pairs = prepareData('eng', 'fra', True)
@@ -515,19 +531,26 @@ def main():
     score_vals, score_names = run("GRU Encoder + GRU Decoder", input_lang, output_lang, train_pairs, test_pairs, \
                             encoder_rnn="GRU", decoder_rnn="GRU")
     all_res_dict.update(score_vals)
+
     # Task 2
     all_res_dict.update(run("LSTM Encoder + LSTM Decoder", input_lang, output_lang, train_pairs, test_pairs, \
-                            encoder_rnn="LSTM", decoder_rnn="LSTM"))
+                            encoder_rnn="LSTM", decoder_rnn="LSTM")[0])
+
     # Task 3
     all_res_dict.update(run("bi-LSTM Encoder + GRU Decoder", input_lang, output_lang, train_pairs, test_pairs, \
-                            encoder_rnn="bi-LSTM", decoder_rnn="GRU"))
+                            encoder_rnn="bi-LSTM", decoder_hidden_size=1024, decoder_rnn="GRU")[0])
+    
     # Task 4
     all_res_dict.update(run("GRU Encoder+ Attention + GRU Decoder", input_lang, output_lang, train_pairs, test_pairs, \
-                            encoder_rnn="GRU", use_attention=True))
+                            use_attention=True)[0])
+    
     # Task 5
-    all_res_dict.update(run("Transformer Encoder + GRU Decoder", input_lang, output_lang, train_pairs, test_pairs, \
-                            decoder_rnn="GRU", use_transformer=True))
+    score_vals, score_names = run("Transformer Encoder + GRU Decoder", input_lang, output_lang, train_pairs, test_pairs, \
+                            use_transformer=True)
+    all_res_dict.update(score_vals)
+    
     res_df = pd.DataFrame.from_dict(all_res_dict, orient='index', columns = score_names)
+    res_df = res_df.reset_index()
     res_df.to_csv("Assignment2_results.csv", index=False)
  
 main()

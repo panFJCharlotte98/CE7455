@@ -2,5 +2,7 @@
 *.pt
 *.npy
 *.zip
-Assignment2/data
+Assignment2/data/
+Assignment2/results/
+Assignment2/CE7455_assignment2/
 *.txt
